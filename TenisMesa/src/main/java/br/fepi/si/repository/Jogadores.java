@@ -31,7 +31,7 @@ public class Jogadores implements Serializable {
 		this.em.persist(jogador);
 	}
 	
-	public void gurdar (Jogador jogador) {
+	public void guardar (Jogador jogador) {
 		this.em.merge(jogador);
 	}
 	

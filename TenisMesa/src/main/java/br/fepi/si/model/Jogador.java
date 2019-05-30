@@ -21,7 +21,7 @@ public class Jogador implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private int idJogador;
+	private Long idJogador;
 	
 	@Column(name = "nome", length = 60, nullable = false)
 	private String nome;
@@ -39,10 +39,10 @@ public class Jogador implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private SexoEnum sexoenum;
 	
-	public int getIdJogador() {
+	public Long getIdJogador() {
 		return idJogador;
 	}
-	public void setIdJogador(int idJogador) {
+	public void setIdJogador(Long idJogador) {
 		this.idJogador = idJogador;
 	}
 	public String getNome() {
@@ -75,12 +75,11 @@ public class Jogador implements Serializable{
 	public void setSexoenum(SexoEnum sexoenum) {
 		this.sexoenum = sexoenum;
 	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idJogador;
+		result = prime * result + ((idJogador == null) ? 0 : idJogador.hashCode());
 		return result;
 	}
 	@Override
@@ -92,11 +91,12 @@ public class Jogador implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Jogador other = (Jogador) obj;
-		if (idJogador != other.idJogador)
+		if (idJogador == null) {
+			if (other.idJogador != null)
+				return false;
+		} else if (!idJogador.equals(other.idJogador))
 			return false;
 		return true;
-	}
-	
-	
+	}	
 	
 }
