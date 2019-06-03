@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,68 +19,80 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Partida implements Premiacao{
 
+	
+	private Long idPartida;
+	private Date data;
+	private double duracao;
+	private int pontuacao;
+	private String local;
+	private Jogador jogadorUm;
+	private Jogador jogadorDois;
+	
 	@Id
 	@GeneratedValue
-	private int idPartida;
+	public Long getIdPartida() {
+		return idPartida;
+	}
+	public void setIdPartida(Long idPartida) {
+		this.idPartida = idPartida;
+	}
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data", nullable = false)
-	private Date data;
-	
-	@Column(name = "duracao", length = 60, nullable = false)
-	private double duracao;
-	
-	@Column(name = "pontuacao", length = 60, nullable = false)
-	private int pontuacao;
-	
-	@Column(name = "local", length = 60, nullable = false)
-	private String local;
-	
-	@JoinColumn(name = "idJogador")
-	private Jogador jogador;
-	
-	public int getIdPartida() {
-		return idPartida;
-	}
-	public void setIdPartida(int idPartida) {
-		this.idPartida = idPartida;
-	}
 	public Date getData() {
 		return data;
 	}
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
+	@Column(name = "duracao", length = 60, nullable = false)
 	public double getDuracao() {
 		return duracao;
 	}
 	public void setDuracao(double duracao) {
 		this.duracao = duracao;
 	}
+	
+	@Column(name = "pontuacao", length = 60, nullable = false)
 	public int getPontuacao() {
 		return pontuacao;
 	}
 	public void setPontuacao(int pontuacao) {
 		this.pontuacao = pontuacao;
 	}
+	
+	@Column(name = "local", length = 60, nullable = false)
 	public String getLocal() {
 		return local;
 	}
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	public Jogador getJogador() {
-		return jogador;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "idJogadorUm")
+	public Jogador getJogadorUm() {
+		return jogadorUm;
 	}
-	public void setJogador(Jogador jogador) {
-		this.jogador = jogador;
+	public void setJogadorUm(Jogador jogadorUm) {
+		this.jogadorUm = jogadorUm;
+	}
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "idJogadorDois")
+	public Jogador getJogadorDois() {
+		return jogadorDois;
+	}
+	public void setJogadorDois(Jogador jogadorDois) {
+		this.jogadorDois = jogadorDois;
 	}
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idPartida;
+		result = prime * result + ((idPartida == null) ? 0 : idPartida.hashCode());
 		return result;
 	}
 	@Override
@@ -92,11 +104,12 @@ public abstract class Partida implements Premiacao{
 		if (getClass() != obj.getClass())
 			return false;
 		Partida other = (Partida) obj;
-		if (idPartida != other.idPartida)
+		if (idPartida == null) {
+			if (other.idPartida != null)
+				return false;
+		} else if (!idPartida.equals(other.idPartida))
 			return false;
 		return true;
 	}
-
-	
-	
+		
 }

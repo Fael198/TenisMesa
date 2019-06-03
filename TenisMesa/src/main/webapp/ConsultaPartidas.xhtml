@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Consulta de Partidas</title>
+	</h:head>
+
+	<f:metadata>
+		<f:viewAction action="#{partidasBean.consultar}" />
+	</f:metadata>
+	
+	<ui:define name="corpo">
+		<h2>Consulta de partidas</h2>
+
+		<h:form>
+			<p:messages showDetail="false" showSummary="true"/>
+			<p:dataTable value="#{partidasBean.partidas}" var="partida" border="2" paginator="true" paginatorAlwaysVisible="false" rows="5">
+				
+				<p:column headerText="#" width="5%">					
+					<h:outputText value="#{partida.idPartida}" />
+				</p:column>
+				
+				<p:column headerText="JogadorUm" sortBy="#{partida.jogadorUm.nome}">
+					<h:outputText value="#{partida.jogadorUm.nome}" />
+				</p:column>
+				
+				<p:column headerText="JogadorDois" sortBy="#{partida.jogadorDois.nome}">
+					<h:outputText value="#{partida.jogadorDois.nome}" />
+				</p:column>
+				
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
