@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Consulta Jogadores</title>
+	</h:head>
+
+	<f:metadata>
+		<f:viewAction action="#{jogadoresBean.consultar}" />
+	</f:metadata>
+	
+	<ui:define name="corpo">
+		<h2>Consulta Jogadores</h2>
+
+		<h:form>
+			<p:messages showDetail="false" showSummary="true"/>
+			<p:dataTable value="#{jogadoresBean.jogadores}" var="jogador" border="2" paginator="true" paginatorAlwaysVisible="false" rows="5">
+				
+				<p:column headerText="#" width="5%">					
+					<h:outputText value="#{jogador.idJogador}" />
+				</p:column>
+				
+				<p:column headerText="Nome" sortBy="#{jogador.nome}" style="text-align: center">					
+					<h:outputText value="#{jogador.nome}" />
+				</p:column>
+				
+				<p:column headerText="Nacionalidade" sortBy="#{jogador.nacionalidade}" style="text-align: center">					
+					<h:outputText value="#{jogador.nacionalidade}" />
+				</p:column>
+				
+				<p:column headerText="Data de Nascimento" sortBy="#{jogador.dataNascimento}" style="text-align: center">					
+					<h:outputText value="#{jogador.dataNascimento}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Sexo" sortBy="#{jogador.sexoenum}" style="text-align: center">					
+					<h:outputText value="#{jogador.sexoenum}" />
+				</p:column>
+				
+				<p:column headerText="Ações" width="10%" style="text-align: center">					
+					<p:button title="Editar" outcome="/CadastroJogadores" icon="ui-icon-pencil">
+						<f:param name="idJogador" value="#{jogador.idJogador}" />
+					</p:button>
+					<p:commandButton title="Remover" icon="ui-icon-trash" 
+						action="#{jogadoresBean.excluir}" update="@form">
+						<f:setPropertyActionListener 
+							value="#{jogador}" target="#{jogadoresBean.jogadorSelecionado}"/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

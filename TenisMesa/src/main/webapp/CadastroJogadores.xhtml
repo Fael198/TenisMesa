@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:metadata>			
+		<f:viewParam name="id" value="#{cadastroJogadorBean.jogador}"/>	
+		<f:viewAction action="#{cadastroJogadorBean.prepararCadastro}" />
+	</f:metadata>
+
+	<h:head>
+		<title>Cadastro de Jogadores</title>
+	</h:head>
+		
+		<ui:define name="corpo">
+			<h2>Cadastro de Jogadores</h2>
+
+			<h:form>
+				<p:messages showDetail="false" showSummary="true"/>				
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Nome" for="nome"/>
+					<p:inputText id="nome" value="#{cadastroJogadorBean.jogador.nome}" required="true" requiredMessage="Nome obrigatório"/>
+					
+					<p:outputLabel value="Nacionalidade" for="nacionalidade"/>
+					<p:inputText id="nacionalidade" value="#{cadastroJogadorBean.jogador.nacionalidade}" required="true" requiredMessage="Nacionalidade obrigatória"/>
+					
+					<p:outputLabel value="Data de Nascimento" for="dataNascimento"/>
+					<p:calendar id="dataNascimento"
+						value="#{cadastroJogadorBean.jogador.dataNascimento}"
+						pattern="dd/MM/yyyy" required="true" />
+					
+					<p:outputLabel value="Sexo" for="sexo" />
+					<p:selectOneButton id="sexo"
+						value="#{cadastroJogadorBean.jogador.sexoenum}" required="true">
+						<f:selectItems value="#{cadastroJogadorBean.sexoEnum}"
+							var="sexoEnum" itemValue="#{sexoEnum}"
+							itemLabel="#{sexoEnum.descricao}" />
+					</p:selectOneButton>
+					
+					<p:commandButton value="Salvar" action="#{cadastroJogadorBean.salvar}" update="@form"/>
+				</p:panelGrid>
+			</h:form>
+		</ui:define>
+</ui:composition>

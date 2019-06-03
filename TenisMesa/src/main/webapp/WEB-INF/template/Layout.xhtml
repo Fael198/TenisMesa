@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titulo">Sistema Tênis de Mesa</ui:insert>
+	</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+</h:head>
+<h:body>
+	<header>
+		
+	</header>
+
+	<h:form id="menu">
+		<p:menubar>
+			<p:submenu label="Jogadores">
+				<p:menuitem value="Consultar Jogadores"
+					action="/ConsultaJogadores?faces-redirect=true" />
+				<p:menuitem value="Cadastrar Jogadores"
+					action="/CadastroJogadores?faces-redirect=true" />
+			</p:submenu>
+			<p:submenu label="Partidas">
+				<p:menuitem value="Consultar Partidas"
+					action="/ConsultaPartidas?faces-redirect=true" />
+				<p:menuitem value="Cadastrar Partidas"
+					action="/CadastroPartidas?faces-redirect=true" />
+			</p:submenu>
+
+			<p:menuitem value="Sair" />
+
+		</p:menubar>
+	</h:form>
+
+
+	<div id="conteudo">
+		<ui:insert name="corpo" />
+	</div>
+	<footer>
+		Sistema Tênis de Mesa <br /> <br />		
+	</footer>
+</h:body>
+
+</html>

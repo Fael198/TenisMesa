@@ -26,9 +26,6 @@ public class Jogador implements Serializable{
 	@Column(name = "nome", length = 60, nullable = false)
 	private String nome;
 	
-	@Column(name = "quantidade", length = 60, nullable = false)
-	private int quantidade;
-	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dataNascimento", length = 60, nullable = false)
 	private Date dataNascimento;
@@ -50,12 +47,6 @@ public class Jogador implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public int getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
 	}
 	public Date getDataNascimento() {
 		return dataNascimento;
