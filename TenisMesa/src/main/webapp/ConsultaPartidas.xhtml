@@ -18,18 +18,42 @@
 
 		<h:form>
 			<p:messages showDetail="false" showSummary="true"/>
-			<p:dataTable value="#{partidasBean.partidas}" var="partida" border="2" paginator="true" paginatorAlwaysVisible="false" rows="5">
+			<p:dataTable value="#{partidasBean.partidas}" var="partida" border="2" paginator="true" paginatorAlwaysVisible="false" rows="6">
 				
 				<p:column headerText="#" width="5%">					
 					<h:outputText value="#{partida.idPartida}" />
 				</p:column>
 				
-				<p:column headerText="JogadorUm" sortBy="#{partida.jogadorUm.nome}">
+				<p:column headerText="Jogador Um" sortBy="#{partida.jogadorUm.nome}">
 					<h:outputText value="#{partida.jogadorUm.nome}" />
 				</p:column>
 				
-				<p:column headerText="JogadorDois" sortBy="#{partida.jogadorDois.nome}">
+				<p:column headerText="Pontuacao" sortBy="#{partida.pontJogadorUm}">
+					<h:outputText value="#{partida.pontJogadorUm}" />
+				</p:column>
+				
+				<p:column headerText="X">
+					<h:outputText> X </h:outputText>
+				</p:column>
+				
+				<p:column headerText="Pontuacao" sortBy="#{partida.pontJogadorDois}">
+					<h:outputText value="#{partida.pontJogadorDois}" />
+				</p:column>
+				
+				<p:column headerText="Jogador Dois" sortBy="#{partida.jogadorDois.nome}">
 					<h:outputText value="#{partida.jogadorDois.nome}" />
+				</p:column>
+				
+				<p:column headerText="Duracao" sortBy="#{partida.duracao}">
+					<h:outputText value="#{partida.duracao}" />
+				</p:column>
+				
+				<p:column headerText="Local" sortBy="#{partida.local}">
+					<h:outputText value="#{partida.local}" />
+				</p:column>
+				
+				<p:column headerText="Data" sortBy="#{partida.data}">
+					<h:outputText value="#{partida.data}" />
 				</p:column>
 				
 			</p:dataTable>

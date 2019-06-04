@@ -19,11 +19,11 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Partida implements Premiacao{
 
-	
 	private Long idPartida;
 	private Date data;
 	private double duracao;
-	private int pontuacao;
+	private int pontJogadorUm;
+	private int pontJogadorDois;
 	private String local;
 	private Jogador jogadorUm;
 	private Jogador jogadorDois;
@@ -54,12 +54,20 @@ public abstract class Partida implements Premiacao{
 		this.duracao = duracao;
 	}
 	
-	@Column(name = "pontuacao", length = 60, nullable = false)
-	public int getPontuacao() {
-		return pontuacao;
+	@Column(name = "ponJogadorUm", length = 60, nullable = false)
+	public int getPontJogadorUm() {
+		return pontJogadorUm;
 	}
-	public void setPontuacao(int pontuacao) {
-		this.pontuacao = pontuacao;
+	public void setPontJogadorUm(int pontJogadorUm) {
+		this.pontJogadorUm = pontJogadorUm;
+	}
+	
+	@Column(name = "ponJogadorDois", length = 60, nullable = false)
+	public int getPontJogadorDois() {
+		return pontJogadorDois;
+	}
+	public void setPontJogadorDois(int pontJogadorDois) {
+		this.pontJogadorDois = pontJogadorDois;
 	}
 	
 	@Column(name = "local", length = 60, nullable = false)
