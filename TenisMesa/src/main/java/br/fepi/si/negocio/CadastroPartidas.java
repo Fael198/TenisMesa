@@ -2,6 +2,8 @@ package br.fepi.si.negocio;
 
 import java.io.Serializable;
 
+import br.fepi.si.model.Partida;
+import br.fepi.si.negocio.exception.NegocioException;
 import br.fepi.si.repository.Partidas;
 
 public class CadastroPartidas implements Serializable {
@@ -14,11 +16,12 @@ public class CadastroPartidas implements Serializable {
 		this.partidas = partidas;
 	}
 
-	public Partidas getPartidas() {
-		return partidas;
+	public void salvar(Partida partida) throws NegocioException {
+		this.partidas.guardar(partida);
 	}
-
-	public void setPartidas(Partidas partidas) {
-		this.partidas = partidas;
+	
+	public void excluir (Partida partida) throws NegocioException {
+		partida = this.partidas.porId(partida.getIdPartida());
+		this.partidas.remover(partida);
 	}
 }

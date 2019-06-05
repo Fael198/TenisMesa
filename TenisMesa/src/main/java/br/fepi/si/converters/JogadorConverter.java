@@ -11,7 +11,7 @@ import br.fepi.si.repository.Jogadores;
 import br.fepi.si.util.DataSource;
 
 @FacesConverter(forClass = Jogador.class)
-public class PessoaConverter implements Converter {
+public class JogadorConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {

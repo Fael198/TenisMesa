@@ -1,5 +1,6 @@
 package br.fepi.si.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,9 +17,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "partida")
-@Inheritance(strategy=InheritanceType.JOINED)
-public abstract class Partida implements Premiacao{
+public class Partida implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Long idPartida;
 	private Date data;
 	private double duracao;

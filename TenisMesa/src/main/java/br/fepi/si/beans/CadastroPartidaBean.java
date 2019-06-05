@@ -49,6 +49,7 @@ public class CadastroPartidaBean implements Serializable {
 	}
 	
 	public void salvar() {
+		
 		EntityManager em = DataSource.getEntityManager();
 		EntityTransaction et = em.getTransaction();
 		FacesContext faces = FacesContext.getCurrentInstance();
@@ -56,6 +57,7 @@ public class CadastroPartidaBean implements Serializable {
 		try {
 			et.begin();
 			CadastroPartidas cadastro = new CadastroPartidas(new Partidas(em));
+			cadastro.salvar(partida);
 			this.partida = new Partida();
 			faces.addMessage(null, new FacesMessage("Salvo com sucesso!"));
 			et.commit();
