@@ -16,25 +16,65 @@
 		<h2>Cadastro de partidas</h2>
 		<h:form>
 			<p:messages showDetail="false" showSummary="true" />
-			<p:panelGrid columns="2">
+			<p:panelGrid columns="5">
 					
-					<p:outputLabel value="Jogador 1" for="jogadorUm"/>
-					<p:selectOneMenu id="pessoa"></p:selectOneMenu>
+					<p:outputLabel value="Jogador 1: " />
 					
-					<p:outputLabel value="Descrição" for="descricao"/>
-					<p:inputText id="descricao"></p:inputText>
+					<p:outputLabel value="Nome " for="jogadorUm"/>
+					<p:selectOneMenu id="jogadorUm" required="true"
+						value="#{cadastroPartidaBean.partida.jogadorUm}" filter="true"
+						filterMatchMode="contains">
+						<f:selectItem itemLabel="Selecione.." noSelectionOption="true"/>
+						<f:selectItems value="#{cadastroPartidaBean.todosJogadores}"
+						var="jogadorUm" itemValue="#{jogador}" itemLabel="#{jogadorUm.nome}" />
+				</p:selectOneMenu>
 					
-					<p:outputLabel value="Valor" for="valor"/>
-					<p:inputText id="valor"></p:inputText>
+					<p:outputLabel value="Pontuacao final:" for="pontuacaoUm" />
+					<p:inputText id="pontuacaoUm" required="true" 
+						value="#{cadastroPartidaBean.partida.pontJogadorUm}">
+						<f:convertNumber locale="pt_BR" />
+					</p:inputText>
 					
-					<p:outputLabel value="Data Vencimento" for="dataVencimento"/>
-					<p:calendar id="dataVencimento"></p:calendar>
+					<p:outputLabel value="Jogador 2: " />
+					<p:outputLabel value="Nome " for="jogadorDois"/>
+					<p:selectOneMenu id="jogadorDois" required="true"
+						value="#{cadastroPartidaBean.partida.jogadorDois}" filter="true"
+						filterMatchMode="contains">
+						<f:selectItem itemLabel="Selecione.." noSelectionOption="true"/>
+						<f:selectItems value="#{cadastroPartidaBean.todosJogadores}"
+						var="jogadorUm" itemValue="#{jogador}" itemLabel="#{jogadorUm.nome}" />
+					</p:selectOneMenu>
 					
-					<p:outputLabel value="Data Pagamento" for="dataPagamento"/>
-					<p:calendar id="dataPagamento"></p:calendar>
+					<p:outputLabel value="Pontuacao final:" for="pontuacaoDois" />
+					<p:inputText id="pontuacaoDois" required="true" 
+						value="#{cadastroPartidaBean.partida.pontJogadorDois}">
+						<f:convertNumber locale="pt_BR" />
+					</p:inputText>					
 					
+					<p:outputLabel value="Duracao" for="duracao"/>
+					<p:inputText id="duracao" required="true"
+						value="#{cadastroPartidaBean.partida.duracao}">
+					</p:inputText>
+					<p:outputLabel />
+					<p:outputLabel />
+					<p:outputLabel />
+					
+					<p:outputLabel value="Local" for="local"/>
+					<p:inputText id="local" required="true"
+						value="#{cadastroPartidaBean.partida.local}">
+					</p:inputText>
+					<p:outputLabel />
+					<p:outputLabel />
+					<p:outputLabel />
+					
+					<p:outputLabel value="Data" for="data"/>
+					<p:calendar id="data" required="true"
+						pattern="dd/MM/yyyy" value="#{cadastroPartidaBean.partida.data}" />
+					
+					<p:outputLabel />
+					<p:outputLabel />
 					<p:outputLabel/>
-					<p:commandButton value="Salvar" update="@form"/>
+					<p:commandButton value="Salvar" action="#{cadastroPartidaBean.salvar}" update="@form"/>
 				</p:panelGrid>
 		</h:form>
 	</ui:define>
