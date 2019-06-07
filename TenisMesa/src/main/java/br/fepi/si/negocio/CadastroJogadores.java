@@ -23,8 +23,7 @@ public class CadastroJogadores implements Serializable {
 		this.jogadores.guardar(jogador);
 	}
 	
-	public void excluir (Jogador jogador) throws NegocioException {
-		Partida partida = new Partida();
+	public void excluir (Jogador jogador, Partida partida) throws NegocioException {
 		
 		jogador = this.jogadores.jogadorId(jogador.getIdJogador());
 		partida = this.partidas.porId(partida.getIdPartida());

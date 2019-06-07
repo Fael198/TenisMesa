@@ -37,6 +37,15 @@ img{
 	margin-top: -20px;
 }
 
+.ui-menu{
+	background-color: #666;
+}
+
+.semBorda tr, .semBorda td 
+{ 
+	border: none !important; 
+} 
+
 footer {
 	border-top: 1px solid #ccc;
 	padding: 5px 8px;

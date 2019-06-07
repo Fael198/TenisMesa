@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import br.fepi.si.model.Jogador;
+import br.fepi.si.model.Partida;
 import br.fepi.si.negocio.CadastroJogadores;
 import br.fepi.si.negocio.exception.NegocioException;
 import br.fepi.si.repository.Jogadores;
@@ -25,6 +26,7 @@ public class JogadoresBean implements Serializable {
 	private List<Jogador> jogadores;
 	
 	private Jogador jogadorSelecionado;
+	private Partida partidaSelecionada;
 	
 	public void consultar() {
 		EntityManager em = DataSource.getEntityManager();
@@ -43,7 +45,7 @@ public class JogadoresBean implements Serializable {
 		
 		try {
 			et.begin();
-			cadastro.excluir(this.jogadorSelecionado);
+			cadastro.excluir(this.jogadorSelecionado, this.partidaSelecionada);
 			context.addMessage(null, 
 					new FacesMessage("Jogador excluído com sucesso."));
 			et.commit();
@@ -73,6 +75,16 @@ public class JogadoresBean implements Serializable {
 	public void setJogadorSelecionado(Jogador jogadorSelecionado) {
 		this.jogadorSelecionado = jogadorSelecionado;
 	}
+
+	public Partida getPartidaSelecionada() {
+		return partidaSelecionada;
+	}
+
+	public void setPartidaSelecionada(Partida partidaSelecionada) {
+		this.partidaSelecionada = partidaSelecionada;
+	}
+	
+	
 	
 	
 }
