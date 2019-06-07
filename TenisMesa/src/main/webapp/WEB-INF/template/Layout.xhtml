@@ -12,25 +12,28 @@
 </h:head>
 <h:body>
 	<header>
-		
+		<h:graphicImage library="img" name="tenis.png"/>
 	</header>
 
 	<h:form id="menu">
 		<p:menubar>
+			
+			<p:menuitem value="Home"
+				action="/Home?faces-redirect=true" />
+		
 			<p:submenu label="Jogadores">
 				<p:menuitem value="Consultar Jogadores"
 					action="/ConsultaJogadores?faces-redirect=true" />
 				<p:menuitem value="Cadastrar Jogadores"
 					action="/CadastroJogadores?faces-redirect=true" />
 			</p:submenu>
+			
 			<p:submenu label="Partidas">
 				<p:menuitem value="Consultar Partidas"
 					action="/ConsultaPartidas?faces-redirect=true" />
 				<p:menuitem value="Cadastrar Partidas"
 					action="/CadastroPartidas?faces-redirect=true" />
 			</p:submenu>
-
-			<p:menuitem value="Sair" />
 
 		</p:menubar>
 	</h:form>
@@ -40,7 +43,7 @@
 		<ui:insert name="corpo" />
 	</div>
 	<footer>
-		Sistema Tênis de Mesa <br /> <br />		
+		CR System <br /> <br />		
 	</footer>
 </h:body>
 

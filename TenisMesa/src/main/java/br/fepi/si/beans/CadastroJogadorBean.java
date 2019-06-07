@@ -1,6 +1,7 @@
 package br.fepi.si.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -23,6 +24,15 @@ public class CadastroJogadorBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Jogador jogador;
+	
+	public List<String> autoCompletaNacionalidade(String nacionalidade) {
+		EntityManager em = DataSource.getEntityManager();
+		try {
+			return new Jogadores(em).nacionalidade(nacionalidade);
+		} finally {
+			em.close();
+		}
+	}
 	
 	public void prepararCadastro() {
 		if(this.jogador == null) {

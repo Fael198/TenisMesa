@@ -20,10 +20,6 @@
 			<p:messages showDetail="false" showSummary="true"/>
 			<p:dataTable value="#{jogadoresBean.jogadores}" var="jogador" border="2" paginator="true" paginatorAlwaysVisible="false" rows="5">
 				
-				<p:column headerText="#" width="5%">					
-					<h:outputText value="#{jogador.idJogador}" />
-				</p:column>
-				
 				<p:column headerText="Nome" sortBy="#{jogador.nome}" style="text-align: center">					
 					<h:outputText value="#{jogador.nome}" />
 				</p:column>

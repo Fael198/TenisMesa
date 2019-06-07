@@ -24,7 +24,7 @@
 					<h:outputText value="#{partida.jogadorUm.nome}" />
 				</p:column>
 				
-				<p:column headerText="Pontuacao final" sortBy="#{partida.pontJogadorUm}">
+				<p:column headerText="Pontuacao J1" sortBy="#{partida.pontJogadorUm}">
 					<h:outputText value="#{partida.pontJogadorUm}" />
 				</p:column>
 				
@@ -32,7 +32,7 @@
 					<h:outputText> X </h:outputText>
 				</p:column>
 				
-				<p:column headerText="Pontuacao final" sortBy="#{partida.pontJogadorDois}">
+				<p:column headerText="Pontuacao J2" sortBy="#{partida.pontJogadorDois}">
 					<h:outputText value="#{partida.pontJogadorDois}" />
 				</p:column>
 				
@@ -52,6 +52,13 @@
 					<h:outputText value="#{partida.data}">
 						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
 					</h:outputText>
+				</p:column>
+				<p:column headerText="Ações" width="10%" style="text-align: center">				
+					<p:commandButton title="Remover" icon="ui-icon-trash" 
+						action="#{partidasBean.excluir}" update="@form">
+						<f:setPropertyActionListener 
+							value="#{partida}" target="#{partidasBean.partidaSelecionada}"/>
+					</p:commandButton>
 				</p:column>
 				
 			</p:dataTable>

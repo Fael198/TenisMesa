@@ -14,13 +14,13 @@
 	<ui:define name="corpo">
 
 		<h2>Cadastro de partidas</h2>
-		<h:form>
+		<h:form style="text-align: left">
 			<p:messages showDetail="false" showSummary="true" />
-			<p:panelGrid columns="5">
+			<p:panelGrid columns="5" style="border-color: #fff">
 					
 					<p:outputLabel value="Jogador 1: " />
 					
-					<p:outputLabel value="Nome " for="jogadorUm"/>
+					<p:outputLabel value="Nome: " for="jogadorUm"/>
 					<p:selectOneMenu id="jogadorUm" required="true"
 						value="#{cadastroPartidaBean.partida.jogadorUm}" filter="true"
 						filterMatchMode="contains">
@@ -29,7 +29,7 @@
 						var="jogadorUm" itemValue="#{jogador}" itemLabel="#{jogadorUm.nome}" />
 				</p:selectOneMenu>
 					
-					<p:outputLabel value="Pontuacao final:" for="pontuacaoUm" />
+					<p:outputLabel value="Pontuacao final: " for="pontuacaoUm" />
 					<p:inputText id="pontuacaoUm" required="true" 
 						value="#{cadastroPartidaBean.partida.pontJogadorUm}">
 						<f:convertNumber locale="pt_BR" />
@@ -45,13 +45,13 @@
 						var="jogadorUm" itemValue="#{jogador}" itemLabel="#{jogadorUm.nome}" />
 					</p:selectOneMenu>
 					
-					<p:outputLabel value="Pontuacao final:" for="pontuacaoDois" />
+					<p:outputLabel value="Pontuacao final: " for="pontuacaoDois" />
 					<p:inputText id="pontuacaoDois" required="true" 
 						value="#{cadastroPartidaBean.partida.pontJogadorDois}">
 						<f:convertNumber locale="pt_BR" />
 					</p:inputText>					
 					
-					<p:outputLabel value="Duracao" for="duracao"/>
+					<p:outputLabel value="Duracao: " for="duracao"/>
 					<p:inputText id="duracao" required="true"
 						value="#{cadastroPartidaBean.partida.duracao}">
 					</p:inputText>
@@ -59,7 +59,7 @@
 					<p:outputLabel />
 					<p:outputLabel />
 					
-					<p:outputLabel value="Local" for="local"/>
+					<p:outputLabel value="Local: " for="local"/>
 					<p:inputText id="local" required="true"
 						value="#{cadastroPartidaBean.partida.local}">
 					</p:inputText>
@@ -67,7 +67,7 @@
 					<p:outputLabel />
 					<p:outputLabel />
 					
-					<p:outputLabel value="Data" for="data"/>
+					<p:outputLabel value="Data: " for="data"/>
 					<p:calendar id="data" required="true"
 						pattern="dd/MM/yyyy" value="#{cadastroPartidaBean.partida.data}" />
 					

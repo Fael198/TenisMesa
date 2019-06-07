@@ -18,6 +18,14 @@ public class Jogadores implements Serializable {
 		this.em = em;
 	}
 	
+	public List<String> nacionalidade (String nacionalidade){
+		String query = "select distinct nacionalidade from Jogador"
+				+ " where upper(nacionalidade) like upper(:nacionalidade)";
+		TypedQuery<String> buscaNacionalidades = em.createQuery(query, String.class);
+		buscaNacionalidades.setParameter("nacionalidade", "%"+nacionalidade+"%");
+		return buscaNacionalidades.getResultList();
+	}
+	
 	public Jogador jogadorId(Long id) {
 		return em.find(Jogador.class, id );
 	}

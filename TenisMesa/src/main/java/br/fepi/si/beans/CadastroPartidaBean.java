@@ -28,15 +28,6 @@ public class CadastroPartidaBean implements Serializable {
 	private Partida partida;
 	private List<Jogador> todosJogadores = new ArrayList<>();
 	
-	public List<String> autoCompletaDescricao(String descricao) {
-		EntityManager em = DataSource.getEntityManager();
-		try {
-			return new Partidas(em).descricoes(descricao);
-		} finally {
-			em.close();
-		}
-	}
-	
 	public void prepararCadastro() {
 		EntityManager em = DataSource.getEntityManager();
 		try {

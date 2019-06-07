@@ -18,13 +18,6 @@ public class Partidas implements Serializable {
 		this.em = em;
 	}
 	
-	public List<String> descricoes (String descricao){
-		String query = "select distinct descricao from Partida"
-				+ " where upper(descricao) like upper(:descricao)";
-		TypedQuery<String> buscaDescricoes = em.createQuery(query, String.class);
-		buscaDescricoes.setParameter("descricao", "%"+descricao+"%");
-		return buscaDescricoes.getResultList();
-	}
 	
 	public List<Partida> todos() {
 		TypedQuery<Partida> query = em.createQuery("from Partida", Partida.class);
